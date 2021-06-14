@@ -77,8 +77,9 @@ class myList(object):
             return "Item Not Found"
 
         def insert(self,idx,item):
-            if idx >= self.size() or idx < 0:
-                raise Exception("Index Out of Bounds")
+            if not self.__checkIndex(idx):
+                raise IndexError("Index Out of Bounds")
+            
             list_before_idx = self.array[:idx]
             list_after_idx = self.array[idx:]
             list_before_idx.append(item)
@@ -88,16 +89,7 @@ class myList(object):
             return type(num) == self.Type
 
         def __checkIndex(self, idx):
-            return idx >= 0 and idx <= arr.size()
-
-        
-
-        
-
-
-
-
-
+            return idx >= 0 and idx <= self.size()
 
 
                 
