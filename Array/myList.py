@@ -51,7 +51,7 @@ class myList(object):
 
         def pop(self):
             if self.empty():
-                return "Array Is Empty"
+                raise RuntimeError("Array Is Empty")
             ans = self.array[0]
             self.array = self.array[1:]
             return ans
@@ -64,12 +64,12 @@ class myList(object):
 
         def at(self,idx):
             if idx >= len(self.array):
-                print("Index out of bounds")
+                raise IndexError("Index out of bounds")
             return self.array(idx)
 
         def find(self,num):
             if self.empty():
-                return "Array Is Empty"
+                raise RuntimeError("Array is empty!")
             for i,elem in enumerate(self.array):
                 if num == elem:
                     return i

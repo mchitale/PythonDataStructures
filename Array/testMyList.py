@@ -43,6 +43,8 @@ class testMyList(unittest.TestCase):
             arr.push_back(num)
             assert arr.at(i) == num, "Wrong number found at index {}".format(i)
 
+        with self.assertRaises(IndexError):
+            arr.at(20)
 
     def testInsert(self):
         arr = myList(int)
@@ -59,6 +61,9 @@ class testMyList(unittest.TestCase):
         
     def testPop(self):
         arr = myList(int)
+
+        with self.assertRaises(RuntimeError):
+            elem = arr.pop()
         
         for i in range(10):
             arr.push_back(i+1)
@@ -82,14 +87,16 @@ class testMyList(unittest.TestCase):
     def testFind(self):
         arr = myList(int)
         
+        with self.assertRaises(RuntimeError):
+            arr.find(1)
+
         for i in range(10):
             arr.push_back(i+1)
 
         assert arr.find(7) == 6, "Find failed"
+
+        assert arr.find(12) == "Item Not Found"
         
-
-
-
 
 if __name__ == '__main__':
     
