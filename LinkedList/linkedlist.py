@@ -37,12 +37,85 @@ class linkedlist(object):
     def size(self):
         return self.count
 
-    
+    def empty(self):
+        return self.count == 0
+
+    def value_at(self,idx):
+        if idx >= self.count:
+            raise IndexError("Index exceeds number of items in list")
+
+        runner = self.root
+        for i in range(idx):
+            runner = runner.next
+
+        return runner.data
+
+    def push_front(self,val):
+
+        # Handle empty list edge case
+        if self.empty():
+            self.root = Node(val)
+            self.count+=1
+            return
+
+        newRoot = Node(val)
+        newRoot.next = self.root
+        self.root = newRoot
+        self.count+=1
 
 
+    def pop_front(self):
+
+        ans = self.root.data
+        self.root = self.root.next
+        self.count-=1
+        return ans
 
 
+    def front(self):
+        return self.root.data
 
+    def push_back(self, val):
+        addNode(val)
 
+    def pop_back(self):
+        if self.count == 0:
+            raise RuntimeError("List is empty")
+        
+        if self.count == 1:
+            ans = self.root.data
+            self.root = None
+            self.count = 0
+            return ans
 
+        runner = self.root
+        while runner.next != None:
+            prevRunner = runner
+            runner = runner.next
+        ans = runner.data
+        prevRunner.next = None
+        self.count-=1
+        return ans
+
+    def erase(self, idx):
+        runner = self.root
+
+        for i in range(idx):
+            prevRunner = runner
+            runner = runner.next
+
+        prevRunner.next = runner.next
+        self.count -= 1
+        return
+
+    def removeValue(self,value):
+        runner = self.root
+
+        while runner.data != val:
+            prevRunner = runner
+            runner = runner.next
+
+        prevRunner.next = runner.next
+        self.count -= 1
+        return
 
