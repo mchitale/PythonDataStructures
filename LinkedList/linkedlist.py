@@ -1,14 +1,40 @@
 """ Create your own Linked List """
 
 class Node(object):
-    """docstring for Node"""
+    """
+    Base datatype for a linkedlist node
+    containing the data and a pointer to the
+    next node
+    """
     def __init__(self, dataval = None):
         self.data = dataval
         self.next = None
 
 
 class linkedlist(object):
-    """docstring for linkedlist"""
+    """
+    Usage:
+    >> import linkedlist
+    
+    >> l = linkedlist.linkedlist()
+    >> l.addNode(93)
+    >> l.addNode(39)
+    >> l.addNode(30)
+    >> l.size()
+    
+    3
+
+    >> l.value_at(2)
+
+    30
+
+    >> l.push_front(27)
+    >> l.value_at(0)
+
+    27
+
+    >> 
+    """
     def __init__(self, data=None):
         self.root = Node(data)
         self.count = 1 if data else 0
@@ -76,7 +102,7 @@ class linkedlist(object):
         return self.root.data
 
     def push_back(self, val):
-        addNode(val)
+        self.addNode(val)
 
     def pop_back(self):
         if self.count == 0:
