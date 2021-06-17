@@ -39,6 +39,13 @@ class linkedlist(object):
         self.root = Node(data)
         self.count = 1 if data else 0
 
+    def __getitem__(self, idx):
+        runner = self.root
+        for i in range(idx):
+            runner = runner.next
+
+        return runner.data
+
     def addNode(self,val):
         
         if self.count == 0:
@@ -144,4 +151,21 @@ class linkedlist(object):
         prevRunner.next = runner.next
         self.count -= 1
         return
+
+    def value_n_from_end(self,idx):
+        if (self.size() - idx) < 0:
+            raise IndexError("list isn't long enough to perform this operation")
+
+        #runner_n_from_end = self.root
+        runner = self.root
+        for i in range((self.size()-idx)):
+            prevRunner = runner
+            runner = runner.next
+
+        prevRunner.next = runner.next
+        self.count -= 1
+        return
+
+
+
 

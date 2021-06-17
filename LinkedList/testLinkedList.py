@@ -77,6 +77,15 @@ class testMyList(unittest.TestCase):
         assert val == 29 and l.size() == 2, "testPopBack(): Pop front failed"
 
 
+    def testValueNFromEnd(self):
+        l = linkedlist.linkedlist()
+        for i in range(10):
+            l.push_back(i)
+
+        l.value_n_from_end(7)
+
+        assert l.value_at(3) != 3, "Value removed incorrectly"
+
 
 if __name__=="__main__":
 
@@ -88,6 +97,7 @@ if __name__=="__main__":
     tester.testPushBack()
     tester.testPopFront()
     tester.testPopBack()
+    tester.testValueNFromEnd()
 
     print("Everything passed!")
 
